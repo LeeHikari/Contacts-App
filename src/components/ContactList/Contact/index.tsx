@@ -9,12 +9,8 @@ type UsersProps = {
 export function Contacts({ contact }: UsersProps): JSX.Element {
   const [hideInfo, setHideInfo] = useState(false);
 
-  function Collapsible(): void {
-    setHideInfo((wasOpened) => !wasOpened);
-  }
-
   return (
-    <Container onClick={Collapsible}>
+    <Container onClick={() => setHideInfo((wasOpened) => !wasOpened)}>
       <Text>
         <p className="name">{contact.name}</p>
         <p className="username">{contact.username}</p>

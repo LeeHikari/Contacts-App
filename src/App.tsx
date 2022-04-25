@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DisplayContacts } from "./components/ContactList";
+import "index.css";
 
 export function App(): JSX.Element {
   return (
