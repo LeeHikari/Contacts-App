@@ -1,71 +1,74 @@
-# Getting Started with Create React App
+It has the common default fields in its `package.json`, along with production and development dependencies as well that are specific to the package we have created.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The `package.json`
 
-## Available Scripts
+### Default Package Fields
 
-In the project directory, you can run:
+`yarn init` produces a default `package.json` similar to:
 
-### `npm start`
+```
+{
+  "name": "example-yarn-package",
+  "version": "1.0.0",
+  "description": "An example package to demonstrate Yarn",
+  "main": "index.js",
+  "repository": {
+    "url": "github.com/yarnpkg/example-yarn-package",
+    "type": "git"
+  },
+  "author": "Yarn Contributors",
+  "license": "BSD-2-Clause",
+}
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Custom Package Fields
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can add custom fields to your `package.json` as well. In our case, we have added 4 custom fields.
 
-### `npm test`
+The `scripts` field are for any special scripts that you want to use when running `yarn`. For example, here we add a script called `test` that calls the Jest test runner because we added Jest tests to our Yarn package.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+"scripts": {
+  "test": "jest"
+},
+```
 
-### `npm run build`
+The `dependencies` field lists the other packages that this package is dependent upon. Our example package is dependent on [Lodash](https://lodash.com/) since we use its `multiply` function.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+"dependencies": {
+  "lodash": "^4.16.2"
+},
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `devDependencies` field lists the other packages that this package is dependent upon _during development_. Our example package is dependent on [Jest](https://facebook.github.io/jest/) since we created some Jest-enabled tests for our package.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+"devDependencies": {
+  "jest-cli": "15.1.1"
+},
+```
 
-### `npm run eject`
+The `jest` field is a custom field specific to the Jest package we included as a dev dependency. In this case, we are testing
+in a node environment at the command-line.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+"jest": {
+  "testEnvironment": "node"
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> It is important to note that Lodash and Jest are not required for Yarn. They are just examples of what can be used when you are creating the code for your Yarn package.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+$ yarn install
+$ yarn run test
+```
 
-## Learn More
+## Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Contacts-App
+```
+$ yarn install --production
+```
