@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from "axios";
-import { Users } from "../common/types";
+import { User } from "../common/types";
 
-export function getContacts(): AxiosPromise<Users[]> {
+export function getContacts(): AxiosPromise<User[]> {
   return axios.get("https://jsonplaceholder.typicode.com/users");
 }

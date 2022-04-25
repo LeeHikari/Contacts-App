@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Users } from "../../../common/types";
+import { User } from "../../../common/types";
 
 type UsersProps = {
-  contact: Users;
+  contact: User;
 };
 
 export function Contacts({ contact }: UsersProps): JSX.Element {

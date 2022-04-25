@@ -1,11 +1,11 @@
 import { getContacts } from "../../services/api";
-import { Users } from "../../common/types";
+import { User } from "../../common/types";
 import { Contacts } from "../ContactList/Contact/index";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export function DisplayContacts(): JSX.Element {
-  const [User, setUsers] = useState<Users[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     async function load(): Promise<void> {
@@ -21,7 +21,7 @@ export function DisplayContacts(): JSX.Element {
 
   return (
     <Grid>
-      {User.map((contact) => (
+      {users.map((contact) => (
         <Contacts key={contact.id} contact={contact} />
       ))}
     </Grid>
